@@ -23,6 +23,20 @@ ask_question("Quel est la capital du Cameroun?","Douala", "Yaoundé", "Garoua", 
 
 print(f"Ton score est {score}")
 """
+def numerique_answer(_min, _max):
+    str_answer = input(f"Entre ta réponse entre {_min} et {_max} :")
+    try:
+        int_answer = int(str_answer)
+        if _min <= int_answer <= _max:
+            return int_answer
+
+        print(f"Tu dois entrer une réponse entre {_min} et {_max} ! ")
+    except:
+        print("ERREUR: Tu dois entrer que des chiffres !")
+    return numerique_answer(_min, _max)
+
+
+
 def ask_question(question):
     question_title = question[0]
     choice = question[1]
@@ -36,8 +50,7 @@ def ask_question(question):
     #print("d-",choice[3])
     for i, c in enumerate(choice, start=1):
         print (f"{i}- {c}")
-    answer = input(f"Ta réponse 1 et {choice_len} : ")
-    answer_int = int(answer)
+    answer_int = numerique_answer(1, choice_len)
     if choice[answer_int - 1].lower() == correct_answer.lower():
         print("Bonne réponse, félicitations !")
         score += 1
