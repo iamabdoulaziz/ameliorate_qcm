@@ -26,15 +26,19 @@ print(f"Ton score est {score}")
 def ask_question(question):
     question_title = question[0]
     choice = question[1]
+    choice_len = len(choice)
     correct_answer = question[2]
     global score
     print(question_title)
-    print("a-",choice[0])
-    print("b-",choice[1])
-    print("c-",choice[2])
-    print("d-",choice[3])
-    answer = input("Ta réponse : ")
-    if answer.lower() == correct_answer.lower():
+    #print("a-",choice[0])
+    #print("b-",choice[1])
+    #print("c-",choice[2])
+    #print("d-",choice[3])
+    for i, c in enumerate(choice, start=1):
+        print (f"{i}- {c}")
+    answer = input(f"Ta réponse 1 et {choice_len} : ")
+    answer_int = int(answer)
+    if choice[answer_int - 1].lower() == correct_answer.lower():
         print("Bonne réponse, félicitations !")
         score += 1
     else:
